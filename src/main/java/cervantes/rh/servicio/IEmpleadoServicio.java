@@ -13,4 +13,5 @@ public interface IEmpleadoServicio {
 
     public void eliminarEmpleado(Empleado empleado);
 
+
 }

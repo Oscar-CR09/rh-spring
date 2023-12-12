@@ -1,6 +1,8 @@
 package cervantes.rh.servicio;
 
 import cervantes.rh.modelo.Empleado;
+import cervantes.rh.repositorio.EmpleadoRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,23 +11,32 @@ import java.util.List;
 public class EmpleadoServicio implements IEmpleadoServicio {
 
 
+    @Autowired
+    private EmpleadoRepositorio empleadoRepositorio;
+
     @Override
     public List<Empleado> listarEmpleados() {
-        return null;
+
+        return empleadoRepositorio.findAll();
     }
 
     @Override
     public Empleado buscarEmpleadoPorId(Integer idEmpleado) {
-        return null;
+        Empleado empleado =empleadoRepositorio.findById(idEmpleado).orElse(null);
+        return empleado;
     }
 
     @Override
     public Empleado guardarEmpleado(Empleado empleado) {
-        return null;
+
+        return empleadoRepositorio.save(empleado);
+
     }
 
     @Override
     public void eliminarEmpleado(Empleado empleado) {
+
+        empleadoRepositorio.delete(empleado);
 
     }
 
